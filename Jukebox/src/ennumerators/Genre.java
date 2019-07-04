@@ -2,7 +2,7 @@ package ennumerators;
 
 /**
  * Enumerator that models the different possible genres an album can have
- * @author Pedro Guillermo Feijóo-García
+ * @author Pedro Guillermo Feijï¿½o-Garcï¿½a
  */
 public enum Genre 
 {
@@ -12,3 +12,5 @@ public enum Genre
 	RNB,
 	CLASSICAL
 }
+   
+
