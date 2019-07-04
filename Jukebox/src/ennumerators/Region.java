@@ -2,9 +2,15 @@ package ennumerators;
 
 /**
  * Enumerator that models the different possible regions an interpreter can come from
- * @author Pedro Guillermo Feijóo-García
+ * @author Pedro Guillermo Feijï¿½o-Garcï¿½a
  */
 public enum Region 
 {
 	//TODO Complete this enumerator
+	AFRICA,
+	ASIA,
+	AUSTRALIA,
+	EUROPE,
+	NORTH_AMERICA,
+	SOUTH_AMERICA
 }
