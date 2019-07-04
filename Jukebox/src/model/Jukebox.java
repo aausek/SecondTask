@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 /**
  * Class that models a Jukebox
- * @author Pedro Guillermo Feijóo-García
+ * @author Pedro Guillermo Feijï¿½o-Garcï¿½a
  */
 public class Jukebox 
 {
-	
+		
 	//--------------------------------------------------------------------------
 	// Constants
 	// -------------------------------------------------------------------------

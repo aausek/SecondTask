@@ -14,16 +14,19 @@ public class Interpreter
 	
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Attribute that models interpreter name
 	 */
 	private String name;
 	
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Attribute that models interpreter surname
 	 */
 	private String surname;
 	
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Attribute that models interpreter age
 	 */
 	private int age;
 	
@@ -33,6 +36,7 @@ public class Interpreter
 	
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Enum that models the interpreter region 
 	 */
 	private Region region;
 	
@@ -43,6 +47,11 @@ public class Interpreter
 	
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Method that creates a new instance of interpreter
+	 * @param pName name of interpreter
+	 * @param pSurname surname of interpreter
+	 * @param pAge age of interpreter
+	 * @param pRegion region of interpreter
 	 */
 	public Interpreter(String pName, String pSurname, int pAge, Region pRegion)
 	{
@@ -55,6 +64,8 @@ public class Interpreter
 	
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Method that returns interpreter name
+	 * @return interpreter name
 	 */
 	public String getName() {
 		return name;
@@ -62,6 +73,8 @@ public class Interpreter
 
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Method that returns interpreter surname
+	 * @return interpreter surname
 	 */
 	public String getSurname() {
 		return surname;
@@ -69,6 +82,8 @@ public class Interpreter
 
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Method that returns interpreter age
+	 * @return interpreter age
 	 */
 	public int getAge() {
 		return age;
@@ -76,6 +91,8 @@ public class Interpreter
 	
 	/**
 	 * TODO Complete documentation - check Jukebox class
+	 * Method that returns interpreter region
+	 * @return interpreter region
 	 */
 	public Region getRegion() {
 		return region;
