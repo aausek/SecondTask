@@ -19,7 +19,7 @@ public class Album
 	 * 
 	 */
 	public static final int NUMBER_SONGS = 12;
-	
+
 	//--------------------------------------------------------------------------
 	// Attributes
 	// -------------------------------------------------------------------------
@@ -28,45 +28,45 @@ public class Album
 	 * Attribute that models song name
 	 */
 	private String name;
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Attribute that models song price
 	 */
 	private double price;
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Attribute that models number of existing songs
 	 */
 	private int numberOfExistingSongs;
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Attribute that models interpreter class
 	 */
 	private Interpreter interpreter;
-	
+
 	//--------------------------------------------------------------------------
 	// Relations: Enumerators
 	// -------------------------------------------------------------------------
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Enum that models song genre in Jukebox
 	 */
 	private Genre genre;
-	
+
 	//--------------------------------------------------------------------------
 	// Relations: Structures
 	// -------------------------------------------------------------------------
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Vector that models the songs in Jukebox
 	 */
 	private ArrayList<Song> songs;
-	
+
 	//--------------------------------------------------------------------------
 	// Methods
 	// -------------------------------------------------------------------------
@@ -85,10 +85,10 @@ public class Album
 		price = pPrice;
 		interpreter = pInterpreter;
 		numberOfExistingSongs = 0;
-		
+
 		songs = new ArrayList<Song>();
 	}
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Method created an instance of song
@@ -101,9 +101,9 @@ public class Album
 	public boolean addSong(String pName, int pDuration)
 	{
 		boolean response = false;
-		
+
 		Song existingSong = searchSong(pName);
-		
+
 		if(existingSong == null)
 		{
 			Song song = new Song(pName, pDuration);
@@ -111,10 +111,10 @@ public class Album
 			numberOfExistingSongs++;
 			response = true;
 		}
-		
+
 		return response;
 	}
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Method that searches for a song in Jukebox<br>
@@ -125,7 +125,7 @@ public class Album
 	public Song searchSong(String pName)
 	{
 		Song response = null;
-		
+
 		for (int i = 0; i < songs.size() && response == null; i++) 
 		{
 			Song currentSong = songs.get(i);
@@ -134,10 +134,10 @@ public class Album
 				response = currentSong;
 			}
 		}
-		
+
 		return response;
 	}
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Method that searches for the longest song in Jukebox<br>
@@ -147,7 +147,7 @@ public class Album
 	public Song getLongestSong()
 	{
 		Song longest = null;
-		
+
 		for (int i = 0; i < songs.size(); i++) 
 		{
 			Song current = songs.get(i);
@@ -160,10 +160,10 @@ public class Album
 				longest = current;
 			}
 		}
-		
+
 		return longest;
 	}
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Method that removes a song from Jukebox<br>
@@ -175,7 +175,7 @@ public class Album
 	public boolean removeSong(String pName)
 	{
 		boolean response = false;
-		
+
 		for (int i = 0; i < songs.size() && response == false; i++) 
 		{
 			Song current = songs.get(i);
@@ -185,11 +185,11 @@ public class Album
 				response = true;
 			}
 		}
-		
+
 		return response;
 	}
 
-	
+
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Method that returns album name
@@ -239,6 +239,6 @@ public class Album
 	{
 		return interpreter;
 	}
-	
-	
+
+
 }

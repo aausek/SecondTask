@@ -2,67 +2,70 @@ package model;
 
 import java.util.ArrayList;
 
+import ennumerators.Genre;
+
 /**
  * Class that models a Jukebox
  * @author Pedro Guillermo Feij�o-Garc�a
  */
 public class Jukebox 
 {
-		
+
 	//--------------------------------------------------------------------------
 	// Constants
 	// -------------------------------------------------------------------------
-	
+
 	/**
 	 * Constant that models the maximum possible number of top hits
 	 */
 	public final static int TOP_HITS = 10;
-	
+
 	//--------------------------------------------------------------------------
 	// Attributes
 	// -------------------------------------------------------------------------
-	
+
 	/**
 	 * Attribute that models the number of existing albums in the jukebox
 	 */
 	private int numberOfExistingAlbums;
-	
+
 	/**
 	 * Attribute that models the number of existing hits in the jukebox
 	 */
 	private int numberOfExistingHits;
-	
+
 	//--------------------------------------------------------------------------
 	// Relations: Structures
 	// -------------------------------------------------------------------------
-	
+
 	/**
 	 * Vector that models the albums in the jukebox
 	 */
 	private ArrayList<Album> albums;
-	
+
 	/**
 	 * Array that models the albums in the jukebox
 	 */
 	private Song[] hits;
-	
+
 	//--------------------------------------------------------------------------
 	// Methods
 	// -------------------------------------------------------------------------
-	
+
 	/**
-     * Method that creates an object (instance) of the Jukebox class<br>
-     * <b>post: </b>An instance of type Jukebox has been created<br>
-     */
+	 * Method that creates an object (instance) of the Jukebox class<br>
+	 * <b>post: </b>An instance of type Jukebox has been created<br>
+	 */
 	public Jukebox()
 	{
 		numberOfExistingAlbums = 0;
 		numberOfExistingHits = 0;
 		hits = new Song[TOP_HITS];
-		
+
 		//TODO Initialize albums
+		albums = new ArrayList<Album>();
 	}
-	
+
 	/**
 	 * Method that returns the number of existing albums<br>
 	 * @return the number of existing albums
@@ -70,8 +73,9 @@ public class Jukebox
 	public int getNumberOfExistingAlbums()
 	{
 		//TODO Complete this method
+		return numberOfExistingAlbums;
 	}
-	
+
 	/**
 	 * Method that returns the number of existing hits<br>
 	 * @return the number of existing hits
@@ -79,8 +83,9 @@ public class Jukebox
 	public int getNumberOfExistingHits()
 	{
 		//TODO Complete this method
+		return numberOfExistingHits;
 	}
-	
+
 	/**
 	 * Method that adds an album to the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -94,12 +99,20 @@ public class Jukebox
 	public boolean addAlbum(String pName, String pGenre, double pPrice, Interpreter pInterpreter)
 	{
 		boolean response = false;
-		
+
 		//TODO Complete this method
-		
+		Album existingAlbum = searchAlbum(pName);
+
+		if(existingAlbum == null) {
+
+			Album album = new Album(pName, pGenre, pPrice, pInterpreter);
+			albums.add(album);
+			numberOfExistingAlbums++;
+			response = true;
+		}
 		return response;
 	}
-	
+
 	/**
 	 * Method that searches for an album in the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -109,12 +122,20 @@ public class Jukebox
 	public Album searchAlbum(String pName)
 	{
 		Album response = null;
-		
+
 		//TODO Complete this method
-		
+		for (int i = 0; i < albums.size() && response == null; i++) {
+
+			Album currentAlbum = albums.get(i);
+			if(currentAlbum.getName().equals(pName)) {
+
+				response = currentAlbum;
+			}
+		}
+
 		return response;
 	}
-	
+
 	/**
 	 * Method that adds a song to an album in the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -127,12 +148,20 @@ public class Jukebox
 	public boolean addSong(String pName, int pDuration, String pNameAlbum)
 	{
 		boolean response = false;
-		
+
 		//TODO Complete this method
-		
+		Album album = searchAlbum(pNameAlbum);
+
+		if(album != null && pName == null) {
+			Song newSong = new Song(pName, pDuration);
+			albums.;
+			response = true;
+
+		}
+
 		return response;
 	}
-	
+
 	/**
 	 * Method that returns the most expensive album in the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -141,12 +170,26 @@ public class Jukebox
 	public Album getMostExpensiveAlbum()
 	{
 		Album mostExpensiveAlbum = null;
-		
+
 		//TODO Complete this method
-		
+		double maxPrice = 0.0;
+
+		for (int i = 0; i < albums.size(); i++) {
+
+			Album mostExpensive = albums.get(i);
+
+			if(mostExpensiveAlbum == null) {
+
+				mostExpensiveAlbum = mostExpensive;
+			}
+			else if(mostExpensive.getPrice()>maxPrice) {
+
+				mostExpensiveAlbum = mostExpensive;
+			}	
+		}
 		return mostExpensiveAlbum;
 	}
-	
+
 	/**
 	 * Method that returns the least expensive album in the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -154,13 +197,27 @@ public class Jukebox
 	 */
 	public Album getLeastExpensiveAlbum()
 	{
-		Album mostExpensiveAlbum = null;
-		
+		Album leastExpensiveAlbum = null;
+
 		//TODO Complete this method
-		
-		return mostExpensiveAlbum;
+		double minPrice = Integer.MAX_VALUE;
+
+		for (int i = 0; i < albums.size(); i++) {
+
+			Album leastExpensive = albums.get(i);
+
+			if(leastExpensiveAlbum == null) {
+
+				leastExpensiveAlbum = leastExpensive;
+			}
+			else if(leastExpensive.getPrice()<minPrice) {
+
+				leastExpensiveAlbum = leastExpensive;
+			}	
+		}
+		return leastExpensiveAlbum;
 	}
-	
+
 	/**
 	 * Method that returns the longest song of an existing album in the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -170,17 +227,17 @@ public class Jukebox
 	public Song getLongestSongInAlbum(String pName)
 	{
 		Song longestSong = null;
-		
+
 		Album theAlbum = searchAlbum(pName);
-		
+
 		if(theAlbum != null)
 		{
 			//TODO Complete this method
 		}
-		
+
 		return longestSong;
 	}
-	
+
 	/**
 	 * Method that removes an album from the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -191,12 +248,12 @@ public class Jukebox
 	public boolean removeAlbum(String pName)
 	{
 		boolean response = false;
-		
+
 		//TODO Complete this method
-		
+
 		return response;
 	}
-	
+
 	/**
 	 * Method that removes a song from an album in the jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
@@ -208,12 +265,12 @@ public class Jukebox
 	public boolean removeSongFromAlbum(String pNameSong, String pNameAlbum)
 	{
 		boolean response = false;
-		
+
 		//TODO Complete this method
-		
+
 		return response;
 	}
-	
+
 	/**
 	 * Method that searches for a hit in the jukebox<br>
 	 * <b>pre: </b>The array of hits has already been initialized.<br>
@@ -223,12 +280,12 @@ public class Jukebox
 	public Song searchHit(String pName)
 	{
 		Song response = null;
-		
+
 		//TODO Complete this method
-		
+
 		return response;
 	}
-	
+
 	/**
 	 * Method that adds an existing song to the array of hits in the jukebox<br>
 	 * <b>pre: </b>The array of hits has already been initialized.<br>
@@ -241,19 +298,19 @@ public class Jukebox
 	public boolean addhit(String pNameSong, String pNameAlbum)
 	{
 		boolean response = false;
-		
+
 		Album myAlbum = searchAlbum(pNameAlbum);
-		
+
 		if(myAlbum != null)
 		{
 			Song hitToAdd = myAlbum.searchSong(pNameSong);
-			
+
 			//TODO Complete this method
 		}
-		
+
 		return response;
 	}
-	
+
 	/**
 	 * Method that removes a song from the array of hits in the jukebox<br>
 	 * <b>pre: </b>The array of hits has already been initialized.<br>
@@ -264,12 +321,12 @@ public class Jukebox
 	public boolean removeHit(String pName)
 	{
 		boolean response = false;
-		
+
 		//TODO Complete this method
-		
+
 		return response;
 	}
-	
+
 	/**
 	 * Method that returns the longest song in the array of hits<br>
 	 * <b>pre: </b>The array of hits has already been initialized.<br>
@@ -278,7 +335,7 @@ public class Jukebox
 	public Song getLongestHit()
 	{
 		Song longest = null;
-		
+
 		for (int i = 0; i < hits.length; i++) 
 		{
 			Song current = hits[i];
@@ -288,17 +345,17 @@ public class Jukebox
 				{
 					longest = current;
 				}
-				
+
 				else if(current.getDuration() > longest.getDuration())
 				{
 					longest = current;
 				}
 			}
 		}
-		
+
 		return longest;
 	}
-	
+
 	/**
 	 * Method that returns the shortest song in the array of hits<br>
 	 * <b>pre: </b>The array of hits has already been initialized.<br>
@@ -307,10 +364,10 @@ public class Jukebox
 	public Song getShortestHit()
 	{
 		Song longest = null;
-		
+
 		//TODO Complete this method
-		
+
 		return longest;
 	}
-	
+
 }
