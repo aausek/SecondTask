@@ -334,7 +334,7 @@ public class Jukebox
 			//TODO Complete this method
 			hits.toArray(hitToAdd);
 			
-			numberOfExistingHits++;
+			numberOfExistingHits++;   
 		}
 
 		return response;
