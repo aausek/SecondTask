@@ -233,6 +233,7 @@ public class Jukebox
 		if(theAlbum != null)
 		{
 			//TODO Complete this method
+			longestSong = theAlbum.getLongestSong();
 		}
 
 		return longestSong;
@@ -250,7 +251,17 @@ public class Jukebox
 		boolean response = false;
 
 		//TODO Complete this method
+		for (int i = 0; i < albums.size() && response == false; i++) {
 
+			Album searchedAlbum = albums.get(i);
+
+			if(searchedAlbum.getName().equals(pName)) {
+				
+				albums.remove(i);
+				numberOfExistingAlbums--;
+				response = true;
+			}	
+		}
 		return response;
 	}
 
@@ -265,8 +276,16 @@ public class Jukebox
 	public boolean removeSongFromAlbum(String pNameSong, String pNameAlbum)
 	{
 		boolean response = false;
-
+		
+		Album album = searchAlbum(pNameAlbum);
+		Song song = searchSong(pNameSong);
+		
 		//TODO Complete this method
+			if(album != null && song != null)
+			{
+				album.removeSong(pNameSong);
+				response = true;
+			}
 
 		return response;
 	}
@@ -282,7 +301,14 @@ public class Jukebox
 		Song response = null;
 
 		//TODO Complete this method
+		for(int i = 0; i < hits.length; i++) {
 
+			Song hit = hits[i];
+			if(hit.getName().equals(pName)) {
+
+				response = hit;
+			}
+		}
 		return response;
 	}
 
@@ -306,6 +332,9 @@ public class Jukebox
 			Song hitToAdd = myAlbum.searchSong(pNameSong);
 
 			//TODO Complete this method
+			hits.toArray(hitToAdd);
+			
+			numberOfExistingHits++;
 		}
 
 		return response;

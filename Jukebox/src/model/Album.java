@@ -182,6 +182,7 @@ public class Album
 			if(current.getName().equals(pName))
 			{
 				songs.remove(i);
+				numberOfExistingSongs--;
 				response = true;
 			}
 		}
