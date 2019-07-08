@@ -151,15 +151,11 @@ public class Jukebox
 
 		//TODO Complete this method
 		Album album = searchAlbum(pNameAlbum);
-		Album song = searchSong(pName);
 
 		if(album != null) {
 			
-			Song newSong = new Song(pName, pDuration);
-			album.addSong(newSong);
-			response = true;
+			response = album.addSong(pName, pDuration);
 		}
-
 		return response;
 	}
 
@@ -279,12 +275,11 @@ public class Jukebox
 		boolean response = false;
 		
 		Album album = searchAlbum(pNameAlbum);
-		Song song = searchSong(pNameSong);
 		
 		//TODO Complete this method
-			if(album != null && song != null)
+			if(album != null && album.getName().equals(pNameAlbum))
 			{
-				album.removeSong(pNameSong);
+				response = album.removeSong(pNameSong);
 				response = true;
 			}
 
