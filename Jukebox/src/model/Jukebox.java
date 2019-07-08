@@ -96,7 +96,7 @@ public class Jukebox
 	 * @param pInterpreter interpreter of the new album. pInterpreter != null<br>
 	 * @return true if the album is created. Otherwise it returns false
 	 */
-	public boolean addAlbum(String pName, String pGenre, double pPrice, Interpreter pInterpreter)
+	public boolean addAlbum(String pName, Genre pGenre, double pPrice, Interpreter pInterpreter)
 	{
 		boolean response = false;
 
@@ -151,12 +151,13 @@ public class Jukebox
 
 		//TODO Complete this method
 		Album album = searchAlbum(pNameAlbum);
+		Album song = searchSong(pName);
 
-		if(album != null && pName == null) {
+		if(album != null) {
+			
 			Song newSong = new Song(pName, pDuration);
-			albums.;
+			album.addSong(newSong);
 			response = true;
-
 		}
 
 		return response;
@@ -219,10 +220,10 @@ public class Jukebox
 	}
 
 	/**
-	 * Method that returns the longest song of an existing album in the jukebox<br>
+	 * Method that returns the longest song of an existing album in the Jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
 	 * @param pName name of the album of interest. pName != null <br>
-	 * @return the longest song in the album in the jukebox. If there are no albums, it should return null
+	 * @return the longest song in the album in the Jukebox. If there are no albums, it should return null
 	 */
 	public Song getLongestSongInAlbum(String pName)
 	{
@@ -240,9 +241,9 @@ public class Jukebox
 	}
 
 	/**
-	 * Method that removes an album from the jukebox<br>
+	 * Method that removes an album from the Jukebox<br>
 	 * <b>pre: </b>The vector of albums has already been initialized.<br>
-	 * <b>post: </b>An album has been removed from the jukebox.<br>
+	 * <b>post: </b>An album has been removed from the Jukebox.<br>
 	 * @param pName name of the album to remove. pName != null<br>
 	 * @return true if the album was successfully removed. Otherwise false.
 	 */
@@ -255,7 +256,7 @@ public class Jukebox
 
 			Album searchedAlbum = albums.get(i);
 
-			if(searchedAlbum.getName().equals(pName)) {
+			if(searchedAlbum != null) {
 				
 				albums.remove(i);
 				numberOfExistingAlbums--;
@@ -327,17 +328,20 @@ public class Jukebox
 
 		Album myAlbum = searchAlbum(pNameAlbum);
 
-		if(myAlbum != null)
+		if(myAlbum != null && pNameSong != null)
 		{
 			Song hitToAdd = myAlbum.searchSong(pNameSong);
 
+			for(int i = 0; i < hits.length; i++) {
 			//TODO Complete this method
-			hits.toArray(hitToAdd);
-			
-			numberOfExistingHits++;   
+			hits[i] = hitToAdd;
+			numberOfExistingHits++;
+			response = true;
+			}
 		}
 
 		return response;
+		
 	}
 
 	/**
@@ -351,7 +355,18 @@ public class Jukebox
 	{
 		boolean response = false;
 
+		Song hitToRemove = searchHit(pName);
+
 		//TODO Complete this method
+		for (int i = 0; i < hits.length; i++) {
+
+			if(hits[i].equals(hitToRemove)) {
+
+				hits[i] = null;
+				numberOfExistingHits--;
+				response = true;
+			} 
+		}
 
 		return response;
 	}
@@ -392,11 +407,25 @@ public class Jukebox
 	 */
 	public Song getShortestHit()
 	{
-		Song longest = null;
+		Song shortest = null;
 
 		//TODO Complete this method
-
-		return longest;
+		for (int i = 0; i < hits.length; i++) {
+			
+			Song current = hits[i];
+			if(current != null) {
+				
+				if(shortest == null) {
+					
+					shortest = current;
+				} else if(current.getDuration() < shortest.getDuration()) {
+					
+					shortest = current;
+				}
+			}
+		}
+		
+		return shortest;
 	}
 
 }
