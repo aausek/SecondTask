@@ -63,7 +63,7 @@ public class InteractionClass
 				System.out.println("Please enter the interpreter's age");
 				String txtAge = input.nextLine();
 				int ageInterpreter = Integer.parseInt(txtAge);
-				System.out.println("Please enter the interpreter's region");
+				System.out.println("Please enter the interpreter's region: AFRICA, ASIA, AUSTRALIA, EUROPE, NORTH_AMERICA or SOUTH_AMERICA");
 				String txtRegion = input.nextLine();
 				Region region = Region.valueOf(txtRegion); // Should display all region options
 
@@ -71,7 +71,7 @@ public class InteractionClass
 
 				System.out.println("Please enter album name");
 				String nameAlbum = input.nextLine();
-				System.out.println("Please enter album genre");
+				System.out.println("Please enter album genre: GOSPEL, SALSA, HIPHOP, RNB or CLASSICAL");
 				String txtGenre = input.nextLine();
 				Genre genre = Genre.valueOf(txtGenre); // Should display all genre options
 				System.out.println("Please enter album price");
