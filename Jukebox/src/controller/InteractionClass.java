@@ -67,16 +67,62 @@ public class InteractionClass
 				String txtRegion = input.nextLine();
 				Region region = Region.valueOf(txtRegion); // Should display all region options
 
+				if(txtRegion == "AFRICA") {
+
+					region = Region.AFRICA;
+				}
+				else if(txtRegion == "ASIA") {
+
+					region = Region.ASIA;
+				}
+				else if(txtRegion == "AUSTRALIA") {
+
+					region = Region.AUSTRALIA;
+				}
+				else if(txtRegion == "EUROPE") {
+
+					region = Region.EUROPE;
+				}
+				else if(txtRegion == "NORTH_AMERICA") {
+
+					region = Region.NORTH_AMERICA;
+				}
+				else if(txtRegion == "SOUTH_AMERICA") {
+
+					region = Region.SOUTH_AMERICA;
+				}
+
 				Interpreter interpreter = new Interpreter(nameInterpreter, surnameInterpreter, ageInterpreter, region);
 
 				System.out.println("Please enter album name");
 				String nameAlbum = input.nextLine();
-				System.out.println("Please enter album genre: GOSPEL, SALSA, HIPHOP, RNB or CLASSICAL");
+				System.out.println("Please enter album genre: CLASSICAL, GOSPEL, HIPHOP, RNB or SALSA");
 				String txtGenre = input.nextLine();
 				Genre genre = Genre.valueOf(txtGenre); // Should display all genre options
 				System.out.println("Please enter album price");
 				String txtPrice = input.nextLine();
 				double priceAlbum = Double.parseDouble(txtPrice);
+
+				if(txtGenre == "CLASSICAL") {
+
+					genre = Genre.CLASSICAL;
+				}
+				else if(txtGenre == "GOSPEL") {
+
+					genre = Genre.GOSPEL;
+				}
+				else if (txtGenre == "HIPHOP") {
+
+					genre = Genre.HIPHOP;
+				}
+				else if (txtGenre == "RNB") {
+
+					genre = Genre.RNB;
+				}
+				else if (txtGenre == "SALSA") {
+
+					genre = Genre.SALSA;
+				}
 
 				boolean methodAnswer = model.addAlbum(nameAlbum, genre, priceAlbum, interpreter);
 
