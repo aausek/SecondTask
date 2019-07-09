@@ -348,6 +348,15 @@ public class InteractionClass
 				System.out.println("The Jukebox has " + existingHits + " hits.");
 			}
 
+			System.out.println("Would you like to keep using this app? Y | N");
+			String responseContinue = input.nextLine();
+
+			// continueExecution is true
+			if(responseContinue.equals("N")) {
+
+				continueExecution = false;
+			}
+
 			input.close();
 		}
 	}
