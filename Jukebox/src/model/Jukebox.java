@@ -135,6 +135,27 @@ public class Jukebox
 
 		return response;
 	}
+	
+	/**
+	 * Method that searches for a song in an album<br>
+	 * <b>pre: </b>The vector of songs has already been initialized.<br>
+	 * @param pName name of the song it will look for. pName != null<br>
+	 * @return the song if it exists. Otherwise null
+	 */
+	public Song searchSong(String pNameSong, String pNameAlbum) {
+		
+		Song currentSong = null;
+
+		Album theAlbum = searchAlbum(pNameAlbum);
+
+		if(theAlbum != null)
+		{
+			//TODO Complete this method
+			currentSong = theAlbum.searchSong(pNameSong);
+		}
+
+		return currentSong;
+	}
 
 	/**
 	 * Method that adds a song to an album in the jukebox<br>
@@ -152,7 +173,7 @@ public class Jukebox
 		//TODO Complete this method
 		Album album = searchAlbum(pNameAlbum);
 
-		if(album != null) {
+		if(album != null) {      
 			
 			response = album.addSong(pName, pDuration);
 		}
@@ -317,19 +338,20 @@ public class Jukebox
 	 * @param pNameAlbum name of the album that has the song to be added to the array of hits. pNameAlbum != null <br>
 	 * @return true if it was successfully added. Otherwise false
 	 */
-	public boolean addhit(String pNameSong, String pNameAlbum)
+	public boolean addHit(String pNameSong, String pNameAlbum)
 	{
 		boolean response = false;
 
 		Album myAlbum = searchAlbum(pNameAlbum);
 
-		if(myAlbum != null && pNameSong != null)
+		if(myAlbum != null)
 		{
 			Song hitToAdd = myAlbum.searchSong(pNameSong);
-
-			for(int i = 0; i < hits.length; i++) {
+			Song currentHit = searchHit(pNameSong);
+					
+			if(currentHit == null && numberOfExistingHits < TOP_HITS) {
 			//TODO Complete this method
-			hits[i] = hitToAdd;
+			hits[numberOfExistingHits+1] = hitToAdd;
 			numberOfExistingHits++;
 			response = true;
 			}
