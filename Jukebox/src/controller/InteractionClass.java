@@ -362,7 +362,7 @@ public class InteractionClass
 					System.out.println("I'm sorry, there are no hits in the Jukebox!");
 				}
 				else {
-					System.out.println("The hit " + longestHit + " was found!");
+					System.out.println("The hit " + longestHit.getName() + " was found!");
 				}
 			}
 
@@ -376,7 +376,7 @@ public class InteractionClass
 					System.out.println("I'm sorry, there are no hits in the Jukebox!");
 				}
 				else {
-					System.out.println("The hit " + shortestHit + " was found!");
+					System.out.println("The hit " + shortestHit.getName() + " was found!");
 				}
 			}
 

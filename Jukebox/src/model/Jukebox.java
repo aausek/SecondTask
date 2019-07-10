@@ -378,7 +378,7 @@ public class Jukebox
 		//TODO Complete this method
 		for (int i = 0; i < hits.length; i++) {
 
-			if(hits[i].equals(hitToRemove)) {
+			if(hits[i] != null && hits[i].equals(hitToRemove)) {
 
 				hits[i] = null;
 				numberOfExistingHits--;
@@ -407,7 +407,7 @@ public class Jukebox
 				longest = current;
 			}
 
-			else if(current.getDuration() > longest.getDuration())
+			else if(current != null && current.getDuration() > longest.getDuration())
 			{
 				longest = current;
 			}
@@ -433,7 +433,8 @@ public class Jukebox
 			if(shortest == null) {
 
 				shortest = current;
-			} else if(current.getDuration() < shortest.getDuration()) {
+				
+			} else if(current != null && current.getDuration() < shortest.getDuration()) {
 
 				shortest = current;
 			}
