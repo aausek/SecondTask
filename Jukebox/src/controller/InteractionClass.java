@@ -16,7 +16,7 @@ import ennumerators.Region;// Do we need this?
 public class InteractionClass 
 {
 	/**
-	 * Main method of the application. It controls the excecution of the program.
+	 * Main method of the application. It controls the execution of the program.
 	 * @param args arguments input by the Java Virtual Machine and the environment.
 	 */
 	public static void main(String[] args) 
@@ -63,31 +63,32 @@ public class InteractionClass
 				System.out.println("Please enter the interpreter's age");
 				String txtAge = input.nextLine();
 				int ageInterpreter = Integer.parseInt(txtAge);
-				System.out.println("Please enter the interpreter's region: AFRICA, ASIA, AUSTRALIA, EUROPE, NORTH_AMERICA or SOUTH_AMERICA");
+				System.out.println("Please enter the interpreter's region(1-6): 1-AFRICA, 2-ASIA, 3-AUSTRALIA, 4-EUROPE, 5-NORTH_AMERICA or 6-SOUTH_AMERICA");
 				String txtRegion = input.nextLine();
-				Region region = Region.valueOf(txtRegion); // Should display all region options
+				int inputRegion = Integer.parseInt(txtRegion);
+				Region region = null; // Should display all region options
 
-				if(txtRegion == "AFRICA") {
+				if(inputRegion == 1) {
 
 					region = Region.AFRICA;
 				}
-				else if(txtRegion == "ASIA") {
+				else if(inputRegion == 2) {
 
 					region = Region.ASIA;
 				}
-				else if(txtRegion == "AUSTRALIA") {
+				else if(inputRegion == 3) {
 
 					region = Region.AUSTRALIA;
 				}
-				else if(txtRegion == "EUROPE") {
+				else if(inputRegion == 4) {
 
 					region = Region.EUROPE;
 				}
-				else if(txtRegion == "NORTH_AMERICA") {
+				else if(inputRegion == 5) {
 
 					region = Region.NORTH_AMERICA;
 				}
-				else if(txtRegion == "SOUTH_AMERICA") {
+				else if(inputRegion == 6) {
 
 					region = Region.SOUTH_AMERICA;
 				}
@@ -96,30 +97,31 @@ public class InteractionClass
 
 				System.out.println("Please enter album name");
 				String nameAlbum = input.nextLine();
-				System.out.println("Please enter album genre: CLASSICAL, GOSPEL, HIPHOP, RNB or SALSA");
+				System.out.println("Please enter album genre(1-5): 1-CLASSICAL, 2-GOSPEL, 3-HIPHOP, 4-RNB or 5-SALSA");
 				String txtGenre = input.nextLine();
-				Genre genre = Genre.valueOf(txtGenre); // Should display all genre options
+				int inputGenre = Integer.parseInt(txtGenre);
+				Genre genre = null; // Should display all genre options
 				System.out.println("Please enter album price");
 				String txtPrice = input.nextLine();
 				double priceAlbum = Double.parseDouble(txtPrice);
 
-				if(txtGenre == "CLASSICAL") {
+				if(inputGenre == 1) {
 
 					genre = Genre.CLASSICAL;
 				}
-				else if(txtGenre == "GOSPEL") {
+				else if(inputGenre == 2) {
 
 					genre = Genre.GOSPEL;
 				}
-				else if (txtGenre == "HIPHOP") {
+				else if (inputGenre == 3) {
 
 					genre = Genre.HIPHOP;
 				}
-				else if (txtGenre == "RNB") {
+				else if (inputGenre == 4) {
 
 					genre = Genre.RNB;
 				}
-				else if (txtGenre == "SALSA") {
+				else if (inputGenre == 5) {
 
 					genre = Genre.SALSA;
 				}
@@ -190,13 +192,13 @@ public class InteractionClass
 
 				if(searchedAlbum == null) {
 
-					System.out.println("I'm sorry, there is not an album with the name " + nameAlbum);
+					System.out.println("I'm sorry, there is not an album with the name " + nameAlbum.toUpperCase());
 				}
 				else {
-					System.out.println("The album named "+ nameAlbum + " has the following info:");
+					System.out.println("The album named "+ nameAlbum.toUpperCase() + " has the following info:");
 					System.out.println("\t a. Genre: " + searchedAlbum.getGenre());
 					System.out.println("\t b. Price: " + searchedAlbum.getPrice());
-					System.out.println("\t d. Interpreter: " + searchedAlbum.getInterpreter().getName() + " " + searchedAlbum.getInterpreter().getSurname());
+					System.out.println("\t d. Interpreter: " + searchedAlbum.getInterpreter().getName() + " " + searchedAlbum.getInterpreter().getSurname() + " " + searchedAlbum.getInterpreter().getAge() + " " + searchedAlbum.getInterpreter().getRegion());
 					System.out.println("\t c. Number of Songs: " + searchedAlbum.getNumberOfExistingSongs());
 				}
 			}
@@ -261,7 +263,7 @@ public class InteractionClass
 
 				System.out.println("Please enter song name");
 				String nameSong = input.nextLine();
-				System.out.println("Please enter slbum name");
+				System.out.println("Please enter album name");
 				String nameAlbum = input.nextLine();
 
 				boolean methodAnswer = model.removeSongFromAlbum(nameSong, nameAlbum);
@@ -279,7 +281,7 @@ public class InteractionClass
 			//Delete a hit
 			else if(response == 9) {
 
-				System.out.println("Please enter song name");
+				System.out.println("Please enter hit name");
 				String nameSong = input.nextLine();
 
 				boolean methodAnswer = model.removeHit(nameSong);
@@ -357,21 +359,21 @@ public class InteractionClass
 
 				if(longestHit == null) {
 
-					System.out.println("I'm sorry, there are no songs in the Jukebox!");
+					System.out.println("I'm sorry, there are no hits in the Jukebox!");
 				}
 				else {
 					System.out.println("The hit " + longestHit + " was found!");
 				}
 			}
 
-			//Retrieve longest hit
+			//Retrieve shortest hit
 			else if(response == 14) {
 
 				Song shortestHit = model.getShortestHit();
 
 				if(shortestHit == null) {
 
-					System.out.println("I'm sorry, there are no songs in the Jukebox!");
+					System.out.println("I'm sorry, there are no hits in the Jukebox!");
 				}
 				else {
 					System.out.println("The hit " + shortestHit + " was found!");

@@ -129,7 +129,7 @@ public class Album
 		for (int i = 0; i < songs.size() && response == null; i++) 
 		{
 			Song currentSong = songs.get(i);
-			if(currentSong.getName().equals(pName))
+			if(currentSong.getName().equalsIgnoreCase(pName))
 			{
 				response = currentSong;
 			}

@@ -127,7 +127,7 @@ public class Jukebox
 		for (int i = 0; i < albums.size() && response == null; i++) {
 
 			Album currentAlbum = albums.get(i);
-			if(currentAlbum.getName().equals(pName)) {
+			if(currentAlbum.getName().equalsIgnoreCase(pName)) {
 
 				response = currentAlbum;
 			}
@@ -322,7 +322,7 @@ public class Jukebox
 
 			Song hit = hits[i];
 			
-			if(hit != null && hit.getName().equals(pName)) {
+			if(hit != null && hit.getName().equalsIgnoreCase(pName)) {
 
 				response = hit;
 			}
@@ -401,17 +401,15 @@ public class Jukebox
 		for (int i = 0; i < hits.length; i++) 
 		{
 			Song current = hits[i];
-			if(current != null)
-			{
-				if(longest == null)
-				{
-					longest = current;
-				}
 
-				else if(current.getDuration() > longest.getDuration())
-				{
-					longest = current;
-				}
+			if(longest == null)
+			{
+				longest = current;
+			}
+
+			else if(current.getDuration() > longest.getDuration())
+			{
+				longest = current;
 			}
 		}
 
@@ -429,20 +427,18 @@ public class Jukebox
 
 		//TODO Complete this method
 		for (int i = 0; i < hits.length; i++) {
-			
+
 			Song current = hits[i];
-			if(current != null) {
-				
-				if(shortest == null) {
-					
-					shortest = current;
-				} else if(current.getDuration() < shortest.getDuration()) {
-					
-					shortest = current;
-				}
+
+			if(shortest == null) {
+
+				shortest = current;
+			} else if(current.getDuration() < shortest.getDuration()) {
+
+				shortest = current;
 			}
 		}
-		
+
 		return shortest;
 	}
 
