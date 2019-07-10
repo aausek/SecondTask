@@ -347,7 +347,7 @@ public class InteractionClass
 					System.out.println("I'm sorry, there are no songs in " + nameAlbum);
 				}
 				else {
-					System.out.println("The album named "+ nameAlbum + " has the following longest song:");
+					System.out.println("Album "+ nameAlbum + " has the following longest song:");
 					System.out.println("\t" + longestSong.getName());
 				}
 			}
@@ -362,7 +362,7 @@ public class InteractionClass
 					System.out.println("I'm sorry, there are no hits in the Jukebox!");
 				}
 				else {
-					System.out.println("The hit " + longestHit.getName() + " was found!");
+					System.out.println(longestHit.getName() + " hit" + " was found!");
 				}
 			}
 
@@ -376,7 +376,7 @@ public class InteractionClass
 					System.out.println("I'm sorry, there are no hits in the Jukebox!");
 				}
 				else {
-					System.out.println("The hit " + shortestHit.getName() + " was found!");
+					System.out.println(shortestHit.getName() + " hit" + " was found!");
 				}
 			}
 
