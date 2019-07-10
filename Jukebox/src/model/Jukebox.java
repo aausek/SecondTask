@@ -321,7 +321,8 @@ public class Jukebox
 		for(int i = 0; i < hits.length; i++) {
 
 			Song hit = hits[i];
-			if(hit.getName().equals(pName)) {
+			
+			if(hit != null && hit.getName().equals(pName)) {
 
 				response = hit;
 			}

@@ -231,7 +231,7 @@ public class InteractionClass
 
 				if(searchedHit == null) {
 
-					System.out.println("Hit not present in album the album");
+					System.out.println("Hit not present in the Jukebox!");
 				}
 				else {
 					System.out.println("Your hit was found: " + nameSong);
@@ -403,7 +403,7 @@ public class InteractionClass
 				continueExecution = false;
 			}
 
-			input.close();
+			//input.close();
 		}
 	}
 }
