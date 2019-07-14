@@ -442,5 +442,85 @@ public class Jukebox
 
 		return shortest;
 	}
+	
+	/**
+	 * Method that sorts albums in alphabetical order 
+	 * <b>pre: </b>The array list of albums has already been initialized.<br>
+	 * @return 
+	 * @return the alphabetized album list. If there are no albums, returns null.
+	 */
+	public ArrayList<Album> albumSort()
+	{
 
+		Album temp;
+
+		if (albums.size() > 1) // Check if the number of albums > 1
+		{
+			for (int x = 0; x < albums.size(); x++) { // Bubble Sort outer loop
+
+				for (int i = 0; i < albums.size() -x -i; i++) {
+
+					if (albums.get(i).getName().compareToIgnoreCase(albums.get(i+1).getName()) > 0){
+
+						temp = albums.get(i);
+						albums.set(i,albums.get(i+1));
+						albums.set(i+1, temp).getName();
+					}
+				}
+			}
+		}
+		return albums;
+
+	}
 }
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

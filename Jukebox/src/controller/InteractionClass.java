@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Album;
@@ -46,6 +47,8 @@ public class InteractionClass
 			System.out.println("Retrieve shortest hit [14]");
 			System.out.println("Retrieve the number of existing albums [15]");
 			System.out.println("Retrieve the number of existing hits [16]");
+			System.out.println("Alphabetize the album list [17]");
+			System.out.println("Retrieve the album alphabetized album list [18]");
 
 
 			String txtResponse = input.nextLine();
@@ -394,6 +397,25 @@ public class InteractionClass
 				int existingHits = model.getNumberOfExistingHits();
 
 				System.out.println("The Jukebox has " + existingHits + " hits.");
+			}
+			
+			//Sort album list (A-Z) in Jukebox
+			else if(response == 17) {
+
+				model.albumSort();
+			}
+			
+			//Retrieve album list (A-Z) in Jukebox
+			else if(response == 18) {
+
+				ArrayList<Album> alphaAlbums = model.albumSort();
+				
+				System.out.println("The albums in the jukebox are: ");
+				
+				for(int i = 0; i < alphaAlbums.size(); i++) {
+
+					System.out.println(alphaAlbums.get(i).getName());
+				}
 			}
 
 			System.out.println("Would you like to keep using this app? Y | N");

@@ -190,7 +190,6 @@ public class Album
 		return response;
 	}
 
-
 	/**
 	 * TODO Complete documentation - check Jukebox class
 	 * Method that returns album name
