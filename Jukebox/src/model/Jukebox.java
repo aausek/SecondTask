@@ -446,7 +446,6 @@ public class Jukebox
 	/**
 	 * Method that sorts albums in alphabetical order 
 	 * <b>pre: </b>The array list of albums has already been initialized.<br>
-	 * @return 
 	 * @return the alphabetized album list. If there are no albums, returns null.
 	 */
 	public ArrayList<Album> albumSort()
