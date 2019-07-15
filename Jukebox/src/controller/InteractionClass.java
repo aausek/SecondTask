@@ -409,12 +409,18 @@ public class InteractionClass
 			else if(response == 18) {
 
 				ArrayList<Album> alphaAlbums = model.albumSort();
-				
-				System.out.println("The albums in the jukebox are: ");
-				
-				for(int i = 0; i < alphaAlbums.size(); i++) {
 
-					System.out.println(alphaAlbums.get(i).getName());
+				if(alphaAlbums.size() != 0) {
+					
+					System.out.println("The albums in the jukebox are: ");
+
+					for(int i = 0; i < alphaAlbums.size(); i++) {
+
+						System.out.println(alphaAlbums.get(i).getName());
+					}
+				}
+				else {
+					System.out.println("There are no albums in the Jukebox. Please first add albums.");
 				}
 			}
 
